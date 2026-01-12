@@ -10,10 +10,17 @@ from task.app.main import run
 
 run(
     deployment_name='gpt-4o',
-    # TODO:
-    #  1. Use `seed` parameter with value 42 (or whatever you want)
-    #  2. Use `n` parameter with value 5
+    print_only_content=False,  # Show full JSON to see all choices
+    seed=42,  # Fixed seed for reproducibility
+    n=5,  # Generate 5 choices to compare
 )
+
+# Alternative: Without seed (uncomment to try)
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=False,
+#     n=5,  # Without seed, results will be more varied
+# )
 
 # Check the content in choices. The expected result is that in almost all choices the result will be the same.
 # If you restart the app and retry, it should be mostly the same.

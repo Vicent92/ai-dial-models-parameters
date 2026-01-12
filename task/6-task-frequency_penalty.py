@@ -11,9 +11,30 @@ from task.app.main import run
 run(
     deployment_name='gpt-4o',
     print_only_content=True,
-    # TODO:
-    #  Use `frequency_penalty` parameter with different range (-2.0 to 2.0).
+    frequency_penalty=0.5,  # Moderate penalty to reduce repetition
 )
+
+# Alternative configurations (uncomment to try):
+# No penalty (default - may have some repetition):
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=True,
+#     frequency_penalty=0.0,
+# )
+
+# High penalty (much less repetition):
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=True,
+#     frequency_penalty=2.0,
+# )
+
+# Negative penalty (encourages repetition - may produce strange output):
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=True,
+#     frequency_penalty=-2.0,  # Warning: may run long and produce repetitive/strange text
+# )
 
 # Pay attention that when we set for `gpt-4o` frequency_penalty as -2.0 - the request is running too long,
 # and in the result we can get something strange (such as repetitive words in the end).

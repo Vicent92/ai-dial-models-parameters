@@ -11,9 +11,30 @@ from task.app.main import run
 run(
     deployment_name='gpt-4o',
     print_only_content=True,
-    # TODO:
-    #  Use `presence_penalty` parameter with different range (-2.0 to 2.0)
+    presence_penalty=0.5,  # Moderate penalty for topic diversity
 )
+
+# Alternative configurations (uncomment to try):
+# No penalty (default - stays on topic):
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=True,
+#     presence_penalty=0.0,
+# )
+
+# High penalty (explores more related topics):
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=True,
+#     presence_penalty=2.0,
+# )
+
+# Negative penalty (stays very focused on same topic):
+# run(
+#     deployment_name='gpt-4o',
+#     print_only_content=True,
+#     presence_penalty=-2.0,
+# )
 
 # In the final result, we can see that the higher `presence_penalty` (2.0) the more LLM is trying to add topics that
 # somehow related to the main topic.
